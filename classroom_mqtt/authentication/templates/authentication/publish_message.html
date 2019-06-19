@@ -1,0 +1,55 @@
+{% extends "authentication/base.html" %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% block css %} {% load static %} {% load widget_tweaks %}
+    <title>Title</title>
+    {% endblock %}
+  </head>
+  {% block html %}
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+    >
+      <a class="navbar-brand" href="http://127.0.0.1:8000/auth/home/">
+        <img
+          src="{% static 'authentication/images/nav_logo.png' %}"
+          width="180"
+        />
+      </a>
+    </nav>
+    <br />
+
+    <div className="container">
+      <div className="card" style="padding: 2%">
+        <div class="card-header">
+          <h3>Publish Message</h3>
+        </div>
+        <div class="card-body">
+          <div class="row ">
+            <form method="post" class="col">
+              {% csrf_token %} {% for field in form %}
+              <div class="form-group">
+                <label>{{ field.label_tag }}</label>
+                <br />
+                {{ field }}
+              </div>
+              {% endfor %}
+              <input
+                type="submit"
+                value="Publish message"
+                class="btn btn-outline-primary"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("id_message").classList.add("form-control");
+    </script>
+  </body>
+  {% endblock %}
+</html>

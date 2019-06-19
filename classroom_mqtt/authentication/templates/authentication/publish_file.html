@@ -1,0 +1,52 @@
+{% extends "authentication/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% block css %}
+    <title>Title</title>
+    {% endblock %}
+  </head>
+  {% block html %}
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+    >
+      <a class="navbar-brand" href="{% url 'register_all' %}">
+        {% load static %}
+        <img
+          src="{% static 'authentication/images/nav_logo.png' %}"
+          width="180"
+        />
+      </a>
+    </nav>
+    <br />
+    <br />
+    <div class="container">
+      <div class="card">
+        <div class="card-header" style="text-align:center;">
+          <h3>Send File</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <form method="post" class="col">
+              <div class="form-group">
+                {% csrf_token %}
+                {{ form.as_p }}
+              </div>
+              <br /><input
+                type="submit"
+                value="Send filename"
+                class="btn btn-outline-primary"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById("id_name").classList.add("form-control");
+    </script>
+  </body>
+  {% endblock %}
+</html>

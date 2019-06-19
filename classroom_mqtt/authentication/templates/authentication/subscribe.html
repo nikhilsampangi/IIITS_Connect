@@ -1,0 +1,27 @@
+{% extends 'authentication/base.html' %} {% block css %}
+<title>home</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/home_page.css' %}" />
+{% endblock %} {% block html %}
+
+<body>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+  >
+    <a class="navbar-brand" href="http://127.0.0.1:8000/auth/home/">
+      {% load static %}
+      <img
+        src="{% static 'authentication/images/nav_logo.png' %}"
+        width="180"
+      />
+    </a>
+  </nav>
+
+  <div class="conatiner" style="padding:5%;">
+    <div class="row">
+      <!-- code for recieving messages from topic -->
+    </div>
+  </div>
+</body>
+
+{% endblock %}

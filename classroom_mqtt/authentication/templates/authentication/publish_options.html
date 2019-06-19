@@ -1,0 +1,52 @@
+{% extends "authentication/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    {% block css %}
+    <title>Publish</title>
+    {% endblock %}
+  </head>
+  {% block html %}
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+    >
+      <a class="navbar-brand" href="http://127.0.0.1:8000/auth/home/">
+        {% load static %}
+        <img
+          src="{% static 'authentication/images/nav_logo.png' %}"
+          width="180"
+        />
+      </a>
+    </nav>
+    <br />
+    <br />
+    <div class="container">
+      <div class="row">
+        <div
+          class="col"
+          style="text-align: center; border-right: 2px solid #0069d9"
+        >
+          <a
+            href="{% url 'authentication:message_content' t_id %}"
+            class="btn btn-primary btn-lg"
+          >
+            <i class="fa fa-cloud-upload-alt "></i>&nbsp;&nbsp;Publish Message
+          </a>
+          <br /><br />
+        </div>
+{#        <div class="col" style="text-align: center;">#}
+{#          <a#}
+{#            href="{% url 'authentication:send_file' %}"#}
+{#            class="btn btn-primary btn-lg"#}
+{#          >#}
+{#            <i class="fa fa-file-upload"></i>&nbsp;&nbsp;Send a File#}
+{#          </a>#}
+{#          <br /><br />#}
+{#        </div>#}
+      </div>
+    </div>
+  </body>
+  {% endblock %}
+</html>

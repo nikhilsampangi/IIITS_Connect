@@ -1,0 +1,69 @@
+{% extends 'authentication/base.html' %} {% block css %}
+<title>home</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/home_page.css' %}" />
+{% endblock %} {% block html %}
+
+<body>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+  >
+    <a class="navbar-brand" href="http://127.0.0.1:8000/auth/home/">
+      {% load static %}
+      <img
+        src="{% static 'authentication/images/nav_logo.png' %}"
+        width="180"
+      />
+    </a>
+  </nav>
+  <br />
+  <br />
+  <div class="conatiner" style="padding:5%;">
+    <div class="row">
+      <div class="col-6" style="border-right: 1px dashed #333;">
+        <h4>1. File Upload</h4>
+        <br />
+        <div class="form-group">
+          <label for="ext">File Extension</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ext"
+            placeholder="Eg: pgf, jpg"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="name">File Name</label>
+          <input type="text" class="form-control" id="name" />
+        </div>
+        <div class="form-group">
+          <input
+            type="button"
+            class="btn btn-outline-primary form-control"
+            value="Submit"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+        <h4>2. Text Upload</h4>
+        <br />
+        <div class="form-group">
+          <textarea
+            rows="6"
+            class="form-control"
+            placeholder="Start typing here.."
+          ></textarea>
+          <br />
+          <input
+            type="button"
+            class="btn btn-outline-primary form-control"
+            value="Submit"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

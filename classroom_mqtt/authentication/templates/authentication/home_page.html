@@ -1,0 +1,136 @@
+{% extends 'authentication/base.html' %} {% block css %}
+<title>home</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/home_page.css' %}" />
+{% endblock %} {% block html %}
+
+<body>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+  >
+    <a class="navbar-brand" href="{% url 'register_all' %}">
+      {% load static %}
+      <img
+        src="{% static 'authentication/images/nav_logo.png' %}"
+        width="180"
+      />
+    </a>
+    <div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'authentication:create_topic' %}">
+            <i class="fas fa-plus-circle"></i>
+            Create Topic
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <br /><br />
+    <div class="row">
+      <div class="col" style="text-align: center">
+        <a
+          href="{% url 'authentication:subscribe_file' %}"
+          class="btn btn-outline-info btn-block"
+        >
+          <i class="fa fa-plus"></i>
+          &nbsp;&nbsp;Subscribe to a file </a
+        ><br /><br />
+      </div>
+
+        <div class="col" style="text-align: center">
+        <a
+          href="{% url 'authentication:send_actual_file' %}"
+          class="btn btn-outline-info btn-block"
+        >
+          <i class="fa fa-plus"></i>
+          &nbsp;&nbsp;Send a file </a
+        ><br /><br />
+      </div>
+
+{#        <div class="col" style="text-align: center">#}
+{#        <a#}
+{#          href="{% url 'authentication:publish_encrypt_key' %}"#}
+{#          class="btn btn-outline-info btn-block"#}
+{#        >#}
+{#          <i class="fa fa-plus"></i>#}
+{#          &nbsp;&nbsp;Send the key </a#}
+{#        ><br /><br />#}
+{#      </div>#}
+
+{#        <div class="col" style="text-align: center">#}
+{#        <a#}
+{#          href="{% url 'authentication:receive_key' %}"#}
+{#          class="btn btn-outline-info btn-block"#}
+{#        >#}
+{#          <i class="fa fa-plus"></i>#}
+{#          &nbsp;&nbsp;Receive the key </a#}
+{#        ><br /><br />#}
+{#      </div>#}
+
+{#        <div class="col" style="text-align: center">#}
+{#        <a#}
+{#          href="{% url 'authentication:start_key_msg' %}"#}
+{#          class="btn btn-outline-info btn-block"#}
+{#        >#}
+{#          <i class="fa fa-plus"></i>#}
+{#          &nbsp;&nbsp;Send encrypted message </a#}
+{#        ><br /><br />#}
+{#      </div>#}
+
+        <div class="col" style="text-align: center">
+        <a
+          href="{% url 'authentication:send_file' %}"
+          class="btn btn-outline-info btn-block"
+        >
+          <i class="fa fa-plus"></i>
+          &nbsp;&nbsp;Publish filename</a
+        ><br /><br />
+      </div>
+
+      <div class="col" style="text-align: center">
+        <a
+          href="{% url 'authentication:receive_file' %}"
+          class="btn btn-outline-info btn-block"
+        >
+          <i class="fa fa-arrow-circle-down "></i>
+          &nbsp;&nbsp;Receive File </a
+        ><br /><br />
+      </div>
+    </div>
+    <br />
+    {% for topic in topics %}
+    <div class="row" style="padding-left: 8%; padding-right: 8%;">
+      <div class="col-3">{{ topic }}</div>
+      <div class="col-3">
+        <a
+          class="btn btn-block btn-outline-warning"
+          href="{% url 'authentication:show_messages' topic %}"
+        >
+          <i class="fa fa-comments"></i>
+          &nbsp;&nbsp;Messages</a
+        >
+      </div>
+      <div class="col-3">
+        <a
+          class="btn btn-block btn-outline-primary"
+          href="{% url 'authentication:publish_options' topic.id %}"
+          ><i class="fa fa-arrow-circle-up"></i>&nbsp;&nbsp;Publish</a
+        >
+      </div>
+      <div class="col-3">
+        <a
+          class="btn btn-block btn-outline-danger"
+          href="{% url 'authentication:subscribe' topic.id %}"
+          >Subscribe to a message</a
+        >
+      </div>
+    </div>
+    <br />
+    <hr />
+
+    {% endfor %}
+  </div>
+</body>
+{% endblock %}

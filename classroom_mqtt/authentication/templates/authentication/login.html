@@ -1,0 +1,50 @@
+{% extends 'authentication/base.html' %} {% block css %}
+<title>Register</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/register_all.css' %}" />
+{% endblock %} {% block html %}
+
+<body style="background: none;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'register_all' %}">Back</a>
+  </nav>
+  <br /><br />
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <form method="post">
+          {% csrf_token %} {% if form.errors %}
+          <h6 style="text-align:center; color:red">
+            Your username and password didn't match
+          </h6>
+          <br /><br />
+          {% endif %} {% for field in form %}
+          <div class="wrap-input100 validate-input form-group">
+            <span class="label-input100 p-t-30">{{ field.label_tag }}</span
+            ><br />
+            {{ field }}
+            <span class="focus-input100"></span>
+          </div>
+          {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+          {% endfor %} {% endfor %}
+          <br />
+          <input
+            type="submit"
+            value="Login"
+            class="btn btn-block btn-outline-primary"
+          />
+        </form>
+      </div>
+      <div class="col-8" style="padding-left:25%;">
+        {% load static %}
+        <img src="{%static 'authentication/images/bg_2.png' %}" width="420" />
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById("id_username").classList.add("form-control");
+    document.getElementById("id_password").classList.add("form-control");
+  </script>
+</body>
+{% endblock %}

@@ -1,0 +1,19 @@
+.bg {
+  background: url("images/bg.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.fc {
+  position: fixed;
+  bottom: 10%;
+  left: 6%;  
+}
+
+.sc {
+  position: fixed;
+  top: 10%;
+  right: 10%;  
+}

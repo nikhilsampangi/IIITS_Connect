@@ -1,0 +1,45 @@
+{% extends 'authentication/base.html' %} {% block css %}
+<title>home</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/home_page.css' %}" />
+{% endblock %} {% block html %}
+<body>
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light justify-content-between"
+  >
+    <a class="navbar-brand" href="http://127.0.0.1:8000/auth/home/">
+      {% load static %}
+      <img
+        src="{% static 'authentication/images/nav_logo.png' %}"
+        width="180"
+      />
+    </a>
+    <div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'authentication:create_topic' %}">
+            <i class="fas fa-plus-circle"></i>
+            Create Topic
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <br />
+  <br />
+
+  <div class="container">
+    <div class="card card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create Topic" class="btn btn-primary " />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("id_topic").classList.add("form-control");
+  </script>
+</body>
+{% endblock %}
